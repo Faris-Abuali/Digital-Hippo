@@ -7,7 +7,7 @@ import useOnClickOutside from "@/hooks/use-on-click-outside"
 type Props = {}
 
 const NavItems = (props: Props) => {
-    const [activeIndex, setActiveIndex] = useState<null | number>(0)
+    const [activeIndex, setActiveIndex] = useState<null | number>(null)
 
     const isAnyOpen = activeIndex !== null
 
