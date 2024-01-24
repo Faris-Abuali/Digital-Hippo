@@ -22,18 +22,16 @@ export const SignUpPage = () => {
         resolver: zodResolver(AuthCredentialsValidator)
     })
 
-    // const { data } = trpc.auth.useQuery()
-    // console.log(data)
+    const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({})
 
     const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-        console.log({ email, password })
-        // send data to the server
+        mutate({ email, password })
     }
 
     return (
         <>
             <div
-                className="container relative flex pt-20 flex-col items-center justify-center lg:px-0"
+                className="container relative flex py-20 flex-col items-center justify-center lg:px-0"
             >
                 <div
                     className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]"
@@ -81,6 +79,7 @@ export const SignUpPage = () => {
                                         className={cn({
                                             'focus-visible:ring-red-500': errors.password
                                         })}
+                                        type="password"
                                     />
                                 </div>
 
