@@ -8,15 +8,17 @@ dotenv.config({
     path: path.resolve(__dirname, '../.env'),
 })
 
-const transport = nodemailer.createTransport({
-    host: 'smtp.resend.com',
-    // secure: true,
-    port: 465,
+const transporter = nodemailer.createTransport({
+    service: 'outlook',
     auth: {
-        user: 'resend',
-        pass: process.env.RESEND_API_KEY,
+        user: "faris.abuali@outlook.com",
+        pass: "Fhaartie$m2123720",
+    },
+    tls: {
+        rejectUnauthorized: false
     },
 })
+
 
 let cached = (global as any).payload
 
@@ -43,7 +45,7 @@ export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payl
     if (!cached.promise) {
         cached.promise = payload.init({
             email: {
-                transport,
+                transport: transporter,
                 // fromAddress: 'onboarding@resend.com',
                 // fromAddress: 'onboarding@resend.dev',
                 fromAddress: 'faris.abuali@outlook.com',

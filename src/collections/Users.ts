@@ -6,7 +6,8 @@ export const Users: CollectionConfig = {
         verify: {
             generateEmailSubject: ({ token }) => 'Verify your email',
             generateEmailHTML: ({ token }) => {
-                return '<p>Hello, please verify</p>'
+                console.log({ token })
+                return `<a href="${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}">Verify account</a>`
             },   
         }
     },
