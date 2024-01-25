@@ -12,8 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AuthCredentialsValidator, type TAuthCredentialsValidator } from '@/lib/validators/account-credentials-validator'
 import { trpc } from '@/trpc/client'
 
-export const SignUpPage = () => {
-
+const SignUpPage = () => {
     const {
         register,
         handleSubmit,
